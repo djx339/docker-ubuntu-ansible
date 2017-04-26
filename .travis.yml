@@ -20,3 +20,4 @@ after_success:
   - docker run -itd --name ${docker_container} --tmpfs /run --tmpfs /run/lock -v /sys/fs/cgroup:/sys/fs/cgroup:ro ${docker_image}
   - sleep 3
   - docker exec -it ${docker_container} sh -c 'ps aux | grep sshd'
+  - docker exec -it ${docker_container} sh -c 'ps aux'
