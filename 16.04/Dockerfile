@@ -21,6 +21,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         wget \
     && rm -rf /var/lib/apt/lists/*
 
+RUN sed -ri 's/^PermitRootLogin\s+.*/PermitRootLogin yes/' /etc/ssh/sshd_config
+
 # set a cheap, simple password for great convenience
 RUN echo 'root:docker.io' | chpasswd
 
