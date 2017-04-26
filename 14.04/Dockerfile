@@ -58,8 +58,9 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         software-properties-common \
     && apt-add-repository -y ppa:ansible/ansible \
     && apt-get update \
-    && apt-get install -y ansible \
-    && rm -rf /var/lib/apt/lists/*
+    && apt-get install -y ansible python-pip \
+    && rm -rf /var/lib/apt/lists/* \
+    && pip install jmespath
 
 # Install Ansible inventory file.
 RUN echo -e '[local]\nlocalhost ansible_connection=local' > /etc/ansible/hosts
