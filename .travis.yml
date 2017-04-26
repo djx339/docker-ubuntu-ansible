@@ -1,0 +1,22 @@
+sudo: required
+
+services:
+  - docker
+
+os_version:
+  - 14.04
+  - 16.04
+
+before_script:
+  - docker_image=djx339/ubuntu-ansible:$os_version
+  - docker_container=ansible_ubuntu_${os_version}
+
+script:
+  - cd $os_version
+  - docker build --rm -t $docker_image .
+
+after_success:
+  - docker images
+  - docker run --name $docker_container $docker_image
+  - sleep 3
+  - docker exec -it $docker_container sh -c 'ps aux | grep sshd'
