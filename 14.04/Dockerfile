@@ -4,7 +4,12 @@ FROM ubuntu:14.04
 # and then heavily modified and hacked like crazy
 
 # we're going to want this bad boy installed so we can connect :)
-RUN apt-get update && apt-get install -y ssh
+RUN apt-get update && apt-get install -y --no-install-recommends \
+        curl \
+        openssh-server \
+        sudo \
+        wget \
+    && rm -rf /var/lib/apt/lists/*
 
 ADD init-fake.conf /etc/init/fake-container-events.conf
 
