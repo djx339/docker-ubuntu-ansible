@@ -53,7 +53,7 @@ RUN echo 'root:docker.io' | chpasswd
 
 # add a trusted ssh key
 RUN mkdir -p /root/.ssh/ \
-    && curl -sLo /root/.ssh/authorized_keys https://raw.githubusercontent.com/djx339/docker-ubuntu-ansible/master/ansible_docker.key.pub \
+    && curl -skLo /root/.ssh/authorized_keys https://raw.githubusercontent.com/djx339/docker-ubuntu-ansible/master/ansible_docker.key.pub \
     && chmod 700 /root/.ssh \
     && chmod 640 /root/.ssh/authorized_keys
 
