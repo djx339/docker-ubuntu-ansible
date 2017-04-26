@@ -4,7 +4,6 @@ ENV container docker
 # much of this was gleaned from https://github.com/lxc/lxc/blob/lxc-0.8.0/templates/lxc-ubuntu.in
 # and then heavily modified and hacked like crazy
 
-# we're going to want this bad boy installed so we can connect :)
 RUN apt-get update && apt-get install -y --no-install-recommends \
         curl \
         openssh-server \
@@ -45,9 +44,6 @@ RUN /usr/sbin/update-rc.d -f ondemand remove; \
 RUN sed -ri 's/^session\s+required\s+pam_loginuid.so$/session optional pam_loginuid.so/' /etc/pam.d/sshd
 
 RUN sed -ri 's/^PermitRootLogin\s+.*/PermitRootLogin yes/' /etc/ssh/sshd_config
-
-# let Upstart know it's in a container
-ENV container docker
 
 # set a cheap, simple password for great convenience
 RUN echo 'root:docker.io' | chpasswd
