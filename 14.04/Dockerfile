@@ -54,6 +54,16 @@ RUN mkdir -p /root/.ssh/ \
     && chmod 700 /root/.ssh \
     && chmod 640 /root/.ssh/authorized_keys
 
+RUN apt-get update && apt-get install -y --no-install-recommends \
+        software-properties-common \
+    && apt-add-repository -y ppa:ansible/ansible \
+    && apt-get update \
+    && apt-get install ansible \
+    && rm -rf /var/lib/apt/lists/* \
+
+# Install Ansible inventory file.
+RUN echo -e '[local]\nlocalhost ansible_connection=local' > /etc/ansible/hosts
+
 # we can has SSH
 EXPOSE 22
 
