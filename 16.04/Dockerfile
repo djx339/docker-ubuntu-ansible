@@ -19,8 +19,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         openssh-server \
         sudo \
         wget \
-    && rm -rf /var/lib/apt/lists/* \
-    && systemctl enable sshd.service
+    && rm -rf /var/lib/apt/lists/*
 
 # set a cheap, simple password for great convenience
 RUN echo 'root:docker.io' | chpasswd
