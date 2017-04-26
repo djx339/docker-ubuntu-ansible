@@ -45,7 +45,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     && pip install jmespath
 
 # Install Ansible inventory file.
-RUN echo -e '[local]\nlocalhost ansible_connection=local' > /etc/ansible/hosts
+RUN echo '[local]\nlocalhost ansible_connection=local' > /etc/ansible/hosts
 
 # we can has SSH
 EXPOSE 22
