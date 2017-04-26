@@ -3,9 +3,9 @@ sudo: required
 services:
   - docker
 
-os_version:
-  - 14.04
-  - 16.04
+env:
+  - os_version=14.04
+  - os_version=16.04
 
 before_script:
   - docker_image=djx339/ubuntu-ansible:${os_version}
