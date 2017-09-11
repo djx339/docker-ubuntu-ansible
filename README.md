@@ -1,4 +1,11 @@
-# docker-ubuntu-ansible
+# docker-ubuntu-ansible [DEPRECATED]
+
+
+## DEPRECATED
+
+[AnsibleCheck](https://github.com/AnsibleCheck/ansiblecheck) is a better choice.
+
+## Overview
 
 [![Build Status](https://travis-ci.org/djx339/docker-ubuntu-ansible.svg?branch=master)](https://travis-ci.org/djx339/docker-ubuntu-ansible)
 
